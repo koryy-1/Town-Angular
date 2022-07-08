@@ -12,6 +12,8 @@ const routes: Routes = [
   { path: 'population', component: PopulationComponent},
   { path: 'aboutMe', component: AboutComponent},
   { path: 'aboutMe/edit', component: AboutEditComponent},
+  { path: 'users', component: AboutEditComponent},
+  { path: 'users/edit', component: AboutEditComponent},
   // { path: '**', redirectTo: '/'}
 ];
 

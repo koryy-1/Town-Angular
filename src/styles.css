@@ -28,9 +28,9 @@ header span{
 	color: rgb(37, 37, 37);
 }
 
-input{
+/* input{
 	min-width: 800px;
-}
+} */
 
 .scale-pict{
 	min-width: 100vmax;
@@ -72,6 +72,10 @@ main {
 	border-radius: 10px;
 }
 
+[nz-button] {
+	margin-top: 10px;
+}
+
 .AuthorInfo img {
 	width: 300px;
 	float: left;
@@ -80,6 +84,15 @@ main {
 	border-radius: 10px;
 	border: solid;
 	border-width: 1px;
+}
+
+.AuthorInfoRightSide nz-card {
+	float: left;
+	width: 550px;
+}
+
+nz-card {
+	width: 860px;
 }
 
 .AuthorInfo {

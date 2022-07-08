@@ -5,4 +5,4 @@ export interface AboutInfo {
     currentPlaceOfWork: string | null;
     mainActivity: string | null;
     favoriteThings: string | null;
-  }
+}

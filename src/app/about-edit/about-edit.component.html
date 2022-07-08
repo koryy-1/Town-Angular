@@ -4,26 +4,34 @@
 	</div>
 	<h2>О разработчике</h2>
 	<div class="content">
-		<div class="AuthorInfo">
-			<img src="/assets/images/U6UAld1cAB2H9Z9AhDv1Ewqi7Bj3g2YdyGfYJX1W498obSbft0Xx6aAzRq7MW213nHPNoh3whxQodXZlN8-WhxBh.jpg" alt="">
-			<p>краткая информация о себе</p>
-            <input type="text" [value]="aboutInfo.shortInfo" [(ngModel)]="aboutInfo.shortInfo">
+		<form nz-form>
+			<!-- <img src="/assets/images/U6UAld1cAB2H9Z9AhDv1Ewqi7Bj3g2YdyGfYJX1W498obSbft0Xx6aAzRq7MW213nHPNoh3whxQodXZlN8-WhxBh.jpg" alt=""> -->
+			<label>кратко о себе:</label>
+            <input nz-input type="text" [(ngModel)]="aboutInfo.shortInfo" [ngModelOptions]="{ standalone: true }">
+
+			<label>текущее место учебы:</label>
+            <input nz-input type="text" [(ngModel)]="aboutInfo.currentPlaceOfStudy" [ngModelOptions]="{ standalone: true }">
+
+			<label>прошлое место учебы:</label>
+            <input nz-input type="text" [(ngModel)]="aboutInfo.pastPlaceOfStudy" [ngModelOptions]="{ standalone: true }">
+
+			<label>текущее место работы:</label>
+            <input nz-input type="text" [(ngModel)]="aboutInfo.currentPlaceOfWork" [ngModelOptions]="{ standalone: true }">
+
+			<label>Основной род деятельности:</label>
+            <input nz-input type="text" [(ngModel)]="aboutInfo.mainActivity" [ngModelOptions]="{ standalone: true }">
+
+			<label>что мне нравится:</label>
+            <input nz-input type="text" [(ngModel)]="aboutInfo.favoriteThings" [ngModelOptions]="{ standalone: true }">
+
 			<br>
-			<p>текущее место учебы</p>
-            <input type="text" [value]="aboutInfo.currentPlaceOfStudy" [(ngModel)]="aboutInfo.currentPlaceOfStudy">
-			<br>
-			<p>прошлое место учебы</p>
-            <input type="text" [value]="aboutInfo.pastPlaceOfStudy" [(ngModel)]="aboutInfo.pastPlaceOfStudy">
-			<br>
-			<p>текущее место работы</p>
-            <input type="text" [value]="aboutInfo.currentPlaceOfWork" [(ngModel)]="aboutInfo.currentPlaceOfWork">
-		</div>
+			<button nz-button nzType="primary" (click)="saveChanges()">Save changes</button>
+		</form>
 		<div>
-			<h3>Основной род деятельности</h3>
-            <input type="text" [value]="aboutInfo.mainActivity" [(ngModel)]="aboutInfo.mainActivity">
+			<!-- <h3>Основной род деятельности</h3>
+            <input nz-input type="text" [value]="aboutInfo.mainActivity" [(ngModel)]="aboutInfo.mainActivity">
 			<h3>что мне нравится</h3>
-            <input type="text" [value]="aboutInfo.favoriteThings" [(ngModel)]="aboutInfo.favoriteThings">
+            <input nz-input type="text" [value]="aboutInfo.favoriteThings" [(ngModel)]="aboutInfo.favoriteThings"> -->
 		</div>
 	</div>
-    <button (click)="saveChanges()">Save changes</button>
 </main>
