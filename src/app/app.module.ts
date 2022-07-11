@@ -14,15 +14,16 @@ import { HomeComponent } from './home/home.component';
 import { PopulationComponent } from './population/population.component';
 import { AboutComponent } from './about/about.component';
 import { AboutEditComponent } from './about-edit/about-edit.component';
+import { UsersComponent } from './users/users.component';
+import { UsersEditComponent } from './users-edit/users-edit.component';
 
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzCardModule } from 'ng-zorro-antd/card';
-import { UsersComponent } from './users/users.component';
-import { UsersEditComponent } from './users-edit/users-edit.component';
-
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 
 registerLocaleData(en);
@@ -48,7 +49,9 @@ registerLocaleData(en);
     NzFormModule,
     NzButtonModule,
     NzSpaceModule,
-    NzCardModule
+    NzCardModule,
+    NzCheckboxModule,
+    NzSelectModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

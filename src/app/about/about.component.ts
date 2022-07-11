@@ -7,7 +7,7 @@ import { AboutInfo } from '../models/about-model';
 //   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
-  title = 'about';
+  // title = 'about';
 
   aboutInfo: AboutInfo = JSON.parse(localStorage.getItem('aboutInfo') as string)
 

@@ -5,6 +5,8 @@ import { AboutComponent } from './about/about.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { PopulationComponent } from './population/population.component';
+import { UsersEditComponent } from './users-edit/users-edit.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   // { path: '', component: AppComponent},
@@ -12,8 +14,8 @@ const routes: Routes = [
   { path: 'population', component: PopulationComponent},
   { path: 'aboutMe', component: AboutComponent},
   { path: 'aboutMe/edit', component: AboutEditComponent},
-  { path: 'users', component: AboutEditComponent},
-  { path: 'users/edit', component: AboutEditComponent},
+  { path: 'users', component: UsersComponent},
+  { path: 'users/edit', component: UsersEditComponent},
   // { path: '**', redirectTo: '/'}
 ];
 

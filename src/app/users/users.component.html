@@ -1,1 +1,52 @@
-<p>users works!</p>
+<main>
+	<div class="for-white-center-bg">
+		/
+	</div>
+	<h2>Пользователи</h2>
+	<div class="content">
+        <a nz-button nzType="primary" routerLink="/users/edit">Add</a>
+        <div *ngIf="!users || users?.length == 0">
+            <h3 class="no-data">нет данных</h3>
+        </div>
+        <div #elseBlock>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Отчество</th>
+                        <th>Роль</th>
+                        <th>Статус</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.patronymic}}</td>
+                        <td>{{user.role}}</td>
+                        <td *ngIf="user.isActive">активен</td>
+                        <td *ngIf="!user.isActive">не активен</td>
+                        <td>
+                            <a >edit</a> |
+                            <a >delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <ul class="heroes">
+                <li *ngFor="let user of users">
+                    <span class="name">{{user.id}}</span>
+                    <span class="name">{{user.firstName}}</span>
+                    <span class="name">{{user.lastName}}</span>
+                    <span class="name">{{user.patronymic}}</span>
+                    <span class="name">{{user.role}}</span>
+                    <span class="name">{{user.isActive}}</span>
+                </li>
+            </ul> -->
+        </div>
+	</div>
+</main>

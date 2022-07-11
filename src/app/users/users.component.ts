@@ -7,17 +7,24 @@ import { User } from '../models/user-model';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  User: User = {
-    firstName: null,
-    lastName: null,
-    patronymic: null,
-    role: null,
-    isActive: null
-  }
+
+  users?: User[] = JSON.parse(localStorage.getItem('Users') as string)
   
   constructor() { }
 
   ngOnInit(): void {
+    // this.deleteDB()
+    this.ensureCreatedDB()
+    
   }
 
+  deleteDB() {
+    localStorage.setItem('Users', '[]')
+  }
+
+  ensureCreatedDB() {
+    if (!this.users) {
+      localStorage.setItem('Users', `[]`)
+    }
+  }
 }
