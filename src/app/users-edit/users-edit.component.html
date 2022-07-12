@@ -4,11 +4,39 @@
 	</div>
 	<h2>Добавить пользователя</h2>
 	<div class="content">
-		<form nz-form>
+		<form nz-form [formGroup]="validateForm">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzRequired>Логин</nz-form-label>
+                <nz-form-control [nzSm]="7" nzErrorTip="Пожалуйста, введите Логин!">
+                    <input nz-input type="text" [(ngModel)]="user.login" formControlName="login">
+                </nz-form-control>
+            </nz-form-item >
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="password" nzRequired>Пароль</nz-form-label>
+                <nz-form-control [nzSm]="7" nzErrorTip="Пожалуйста, введите Пароль!">
+                    <input nz-input type="password" [(ngModel)]="user.password" formControlName="password" 
+                    (ngModelChange)="updateConfirmValidator()">
+                </nz-form-control>
+            </nz-form-item >
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="checkPassword" nzRequired>Подтвердите пароль</nz-form-label>
+                <nz-form-control [nzSm]="7" [nzErrorTip]="errorTpl">
+                    <input nz-input type="password" formControlName="checkPassword" >
+                    <ng-template #errorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">Пожалуйста, подтвердите пароль!</ng-container>
+                        <ng-container *ngIf="control.hasError('confirm')">
+                            Пароли не совпадают!
+                        </ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item >
+
             <nz-form-item>
                 <nz-form-label [nzSpan]="6" nzRequired>Имя</nz-form-label>
-                <nz-form-control [nzSm]="6">
-                    <input nz-input type="text" [(ngModel)]="user.firstName" [ngModelOptions]="{ standalone: true }">
+                <nz-form-control [nzSm]="7" nzErrorTip="Пожалуйста, введите имя!">
+                    <input nz-input type="text" [(ngModel)]="user.firstName" formControlName="firstName">
                 </nz-form-control>
             </nz-form-item >
 			<!-- <label>Имя:</label>
@@ -16,8 +44,8 @@
             
             <nz-form-item>
                 <nz-form-label [nzSpan]="6" nzRequired>Фамилия</nz-form-label>
-                <nz-form-control [nzSm]="6">
-                    <input nz-input type="text" [(ngModel)]="user.lastName" [ngModelOptions]="{ standalone: true }">
+                <nz-form-control [nzSm]="7" nzErrorTip="Пожалуйста, введите фамилию!">
+                    <input nz-input type="text" [(ngModel)]="user.lastName" formControlName="lastName">
                 </nz-form-control>
             </nz-form-item >
 			<!-- <label>Фамилия:</label>
@@ -25,16 +53,16 @@
 
             <nz-form-item>
                 <nz-form-label [nzSpan]="6" nzRequired>Отчество</nz-form-label>
-                <nz-form-control [nzSm]="6">
-                    <input nz-input type="text" [(ngModel)]="user.patronymic" [ngModelOptions]="{ standalone: true }">
+                <nz-form-control [nzSm]="7" nzErrorTip="Пожалуйста, введите отчество!">
+                    <input nz-input type="text" [(ngModel)]="user.patronymic" formControlName="patronymic">
                 </nz-form-control>
             </nz-form-item >
 			<!-- <label>Отчество:</label>
 			<input nz-input type="text" [(ngModel)]="user.patronymic" [ngModelOptions]="{ standalone: true }"> -->
 
             <nz-form-item>
-                <nz-form-label [nzSpan]="6" nzRequired>Роль</nz-form-label>
-                <nz-form-control [nzSm]="6">
+                <nz-form-label [nzSpan]="6">Роль</nz-form-label>
+                <nz-form-control [nzSm]="7">
                     <nz-select [(ngModel)]="user.role" [ngModelOptions]="{ standalone: true }">
                         <nz-option *ngFor="let role of roles" [nzValue]="role" [nzLabel]="role"></nz-option>
                     </nz-select>
@@ -55,7 +83,7 @@
             <nz-form-item nz-row class="register-area">
                 <nz-form-control [nzSpan]="14" [nzOffset]="6">
                     <button nz-button nzType="primary" (click)="saveUser()">Save changes</button>
-                    <span class="warning">{{warningMessage}}</span>
+                    <!-- <span class="warning">{{warningMessage}}</span> -->
                 </nz-form-control>
             </nz-form-item>
 		</form>
