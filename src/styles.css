@@ -126,5 +126,6 @@ h1, h2{
 }
 
 .table-field{
-	margin: auto;
+	text-align: center;
+	margin: 15px 0 0;
 }

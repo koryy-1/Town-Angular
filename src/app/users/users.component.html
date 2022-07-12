@@ -4,7 +4,7 @@
 	</div>
 	<h2>Список пользователей</h2>
 	<div class="content">
-        <a nz-button nzType="primary" class="add-btn" routerLink="/users/edit">Add</a>
+        <a nz-button nzType="primary" class="add-btn" [routerLink]="['/users/edit', '']">Add</a>
         <table class="table">
             <thead>
                 <tr>
@@ -21,18 +21,32 @@
             <tbody>
                 <tr *ngFor="let user of users">
                     <td>
-                        <span class="table-field">{{user.id}}</span>
+                        <p class="table-field">{{user.id}}</p>
                     </td>
-                    <td>{{user.login}}</td>
-                    <td>{{user.firstName}}</td>
-                    <td>{{user.lastName}}</td>
-                    <td>{{user.patronymic}}</td>
-                    <td>{{user.role}}</td>
-                    <td *ngIf="user.isActive">активен</td>
-                    <td *ngIf="!user.isActive">не активен</td>
                     <td>
-                        <a nz-button nzType="link" routerLink="/users/edit">edit</a> |
-                        <a nz-button nzType="link" nzDanger>delete</a>
+                        <p class="table-field">{{user.login}}</p>
+                    </td>
+                    <td>
+                        <p class="table-field">{{user.firstName}}</p>
+                    </td>
+                    <td>
+                        <p class="table-field">{{user.lastName}}</p>
+                    </td>
+                    <td>
+                        <p class="table-field">{{user.patronymic}}</p>
+                    </td>
+                    <td>
+                        <p class="table-field">{{user.role}}</p>
+                    </td>
+                    <td *ngIf="user.isActive">
+                        <p class="table-field">активен</p>
+                    </td>
+                    <td *ngIf="!user.isActive">
+                        <p class="table-field">не активен</p>
+                    </td>
+                    <td>
+                        <a nz-button nzType="link" [routerLink]="['/users/edit', user.id]">edit</a> |
+                        <a nz-button nzType="link" (click)="showModal(user.id, user.firstName, user.lastName)" nzDanger>delete</a>
                     </td>
                 </tr>
             </tbody>
@@ -42,12 +56,12 @@
         </div>
         <!-- <ul class="heroes">
             <li *ngFor="let user of users">
-                <span class="name">{{user.id}}</span>
-                <span class="name">{{user.firstName}}</span>
-                <span class="name">{{user.lastName}}</span>
-                <span class="name">{{user.patronymic}}</span>
-                <span class="name">{{user.role}}</span>
-                <span class="name">{{user.isActive}}</span>
+                <p class="name">{{user.id}}</p>
+                <p class="name">{{user.firstName}}</p>
+                <p class="name">{{user.lastName}}</p>
+                <p class="name">{{user.patronymic}}</p>
+                <p class="name">{{user.role}}</p>
+                <p class="name">{{user.isActive}}</p>
             </li>
         </ul> -->
 	</div>

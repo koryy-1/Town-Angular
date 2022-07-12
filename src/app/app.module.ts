@@ -24,6 +24,10 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
 
 
 registerLocaleData(en);
@@ -37,6 +41,8 @@ registerLocaleData(en);
     AboutEditComponent,
     UsersComponent,
     UsersEditComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,8 @@ registerLocaleData(en);
     NzSpaceModule,
     NzCardModule,
     NzCheckboxModule,
-    NzSelectModule
+    NzSelectModule,
+    NzModalModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

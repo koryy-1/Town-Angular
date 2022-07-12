@@ -2,8 +2,7 @@
 	<div class="for-white-center-bg">
 		/
 	</div>
-	<h2 *ngIf="!userIsExist">Добавление нового пользователя</h2>
-    <h2 *ngIf="userIsExist">Изменение пользователя</h2>
+	<h2 *ngIf="!userIsExist">Регистрация</h2>
 	<div class="content">
 		<form nz-form [formGroup]="validateForm">
             <nz-form-item>
@@ -83,8 +82,7 @@
 
             <nz-form-item nz-row class="register-area">
                 <nz-form-control [nzSpan]="14" [nzOffset]="6">
-                    <button *ngIf="!userIsExist" nz-button nzType="primary" (click)="addUser()">Создать пользователя</button>
-                    <button *ngIf="userIsExist" nz-button nzType="primary" (click)="changeUser()">Сохранить изменения</button>
+                    <button *ngIf="!userIsExist" nz-button nzType="primary" (click)="register()">зарегистрироваться</button>
                     <!-- <span class="warning">{{warningMessage}}</span> -->
                 </nz-form-control>
             </nz-form-item>

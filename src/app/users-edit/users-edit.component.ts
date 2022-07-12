@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { User } from '../models/user-model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
@@ -26,6 +26,10 @@ export class UsersEditComponent implements OnInit {
 
   // warningMessage = ''
 
+  id = ''
+
+  userIsExist = false
+
   validateForm!: FormGroup
 
   captchaTooltipIcon: NzFormTooltipIcon = {
@@ -34,9 +38,18 @@ export class UsersEditComponent implements OnInit {
   }
 
 
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id')!
+    if (this.id !== '' && this.checkUserExist(+this.id)) {
+      this.userIsExist = true
+    }
+
     this.validateForm = this.fb.group({
       login: [null, [Validators.required]],
       password: [null, [Validators.required]],
@@ -46,6 +59,18 @@ export class UsersEditComponent implements OnInit {
       patronymic: [null, [Validators.required]],
     });
 
+  }
+
+  checkUserExist(id: number): Boolean {
+    this.users = JSON.parse(localStorage.getItem('Users') as string)
+
+    var _user = this.users.find(user => user.id === id)
+
+    if (_user) {
+      this.user = _user
+      return true
+    }
+    return false
   }
 
   updateConfirmValidator(): void {
@@ -92,15 +117,26 @@ export class UsersEditComponent implements OnInit {
     // }
   }
 
-  saveUser() {
+  addUser() {
     if (this.checkData()) {
-      this.users = JSON.parse(localStorage.getItem('Users') as string)
+      if (this.users.length === 0) {
+        this.users = JSON.parse(localStorage.getItem('Users') as string)
+      }
       if (this.users?.length != 0 && this.users[this.users.length - 1].hasOwnProperty('id'))
         this.user.id = this.users[this.users.length - 1].id + 1
       else
         this.user.id = 0
 
       this.users.push(this.user)
+      localStorage.setItem('Users', JSON.stringify(this.users))
+      this.router.navigate(['/users'])
+    }
+  }
+
+  changeUser() {
+    if (this.checkData()) {
+      this.users.map(n => n.id === +this.id ? { ...this.user } : n) // modified
+
       localStorage.setItem('Users', JSON.stringify(this.users))
       this.router.navigate(['/users'])
     }
