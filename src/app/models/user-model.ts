@@ -7,4 +7,5 @@ export interface User {
     patronymic: string | null;
     role: string | null;
     isActive: boolean | null;
+    token?: string;
 }

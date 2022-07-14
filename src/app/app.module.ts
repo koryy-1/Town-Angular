@@ -8,7 +8,7 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { PopulationComponent } from './population/population.component';
@@ -27,6 +27,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { fakeBackendProvider } from './fake-backend/fake-backend.interceptor';
+import { JwtInterceptor } from './jwt.interceptor';
 
 
 
@@ -60,7 +62,13 @@ registerLocaleData(en);
     NzSelectModule,
     NzModalModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

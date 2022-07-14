@@ -127,5 +127,18 @@ h1, h2{
 
 .table-field{
 	text-align: center;
+	margin: 0;
+}
+
+td .table-field{
 	margin: 15px 0 0;
 }
+
+.autorize-btn{
+	float: right;
+	margin-right: 70px;
+}
+
+/* .register-btn{
+	float: right;
+} */

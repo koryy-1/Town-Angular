@@ -46,7 +46,7 @@ export class UsersEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')!
-    if (this.id !== '' && this.checkUserExist(+this.id)) {
+    if (this.id && this.id !== '' && this.checkUserExist(+this.id)) {
       this.userIsExist = true
     }
 
@@ -100,21 +100,6 @@ export class UsersEditComponent implements OnInit {
       })
       return false
     }
-
-    // if (this.user?.login && this.user.login !== ""
-    // && this.user.password && this.user.password !== ""
-    // && this.user.firstName && this.user.firstName !== ""
-    // && this.user.lastName && this.user.lastName !== ""
-    // && this.user.patronymic && this.user.patronymic !== ""
-    // && this.user.role && this.user.role !== "") {
-    //   return true
-    // }
-    // else {
-    //   this.warningMessage = 'some fields are not filled'
-    //   // console.log(this.user);
-      
-    //   return false
-    // }
   }
 
   addUser() {
